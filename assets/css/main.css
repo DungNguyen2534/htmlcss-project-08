@@ -146,6 +146,7 @@ html {
 body {
   font-size: 1.6rem;
   font-family: Gordita, sans-serif;
+  color: var(--text-color);
 }
 
 a {
@@ -157,6 +158,18 @@ button {
   border: none;
   outline: none;
   background: transparent;
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+  color: inherit;
+}
+
+.icon {
+  filter: var(--icon-color);
 }
 
 .row > *, .container-fluid, .container {
@@ -1190,13 +1203,36 @@ button {
     --grid-gutter-y: 90px;
   }
 }
+html.dark {
+  --text-color: #fff;
+  --icon-color: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%)
+    hue-rotate(93deg) brightness(103%) contrast(103%);
+  --header-bg-color: #171c28;
+  --top-act-group-bg-color: #292e39;
+  --top-act-group-shadow: rgba(0, 0, 0, 0.2);
+  --top-act-group-separate: #ededf6;
+}
+
+html {
+  --text-color: #1a162e;
+  --icon-color: brightness(0) saturate(100%) invert(9%) sepia(14%)
+    saturate(2584%) hue-rotate(210deg) brightness(88%) contrast(97%);
+  --header-bg-color: #eee;
+  --top-act-group-bg-color: #fff;
+  --top-act-group-shadow: rgba(237, 237, 246, 0.2);
+  --top-act-group-separate: #ededf6;
+}
+
+.top-act__btn, .top-act__group, .top-act, .navbar__link, .navbar__list, .top-bar {
+  display: flex;
+  align-items: center;
+}
+
 .header {
-  background: #eee;
+  background: var(--header-bg-color);
 }
 
 .top-bar {
-  display: flex;
-  align-items: center;
   padding: 30px 0;
 }
 
@@ -1205,13 +1241,9 @@ button {
   margin-right: auto;
 }
 .navbar__list {
-  display: flex;
-  align-items: center;
   gap: 30px;
 }
 .navbar__link {
-  display: flex;
-  align-items: center;
   gap: 6px;
   font-size: 1.5rem;
   font-weight: 500;
@@ -1222,27 +1254,22 @@ button {
 }
 
 .top-act {
-  display: flex;
-  align-items: center;
   gap: 20px;
 }
 .top-act__group {
-  display: flex;
-  align-items: center;
   min-width: 50px;
   height: 50px;
   border-radius: 8px;
-  background: #fff;
-  box-shadow: 0px 20px 60px 10px rgba(237, 237, 246, 0.2);
+  background: var(--top-act-group-bg-color);
+  box-shadow: 0px 20px 60px 10px var(--top-act-group-shadow);
 }
 .top-act__group--single .top-act__btn {
   padding: 13px;
 }
 .top-act__btn {
-  display: flex;
-  align-items: center;
   gap: 10px;
   padding: 10px 20px;
+  cursor: pointer;
 }
 .top-act__title {
   font-size: 1.5rem;
@@ -1252,7 +1279,7 @@ button {
 .top-act__separate {
   width: 1px;
   height: 30px;
-  background: #ededf6;
+  background: var(--top-act-group-separate);
 }
 .top-act__avatar {
   display: block;
@@ -1260,6 +1287,7 @@ button {
   height: 50px;
   border-radius: 8px;
   box-shadow: 0px 4px 14px 2px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
 }
 
 .logo {
