@@ -1,14 +1,22 @@
 .dropdown {
   position: absolute;
   left: 0;
+
+  width: min(1240px, 100%);
+
   padding-top: 54px;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.25s ease;
 
   &__inner {
+    --inner-max-height: min(582px, 100vh - 158px);
+    --inner-padding: 30px;
+
     position: relative;
-    padding: 30px;
+    max-height: var(--inner-max-height);
+
+    padding: var(--inner-padding);
     border-radius: 2rem;
     background: var(--dropdown-bg-color);
     box-shadow: 0px 40px 90px 20px var(--dropdown-shadow-color);
@@ -20,6 +28,72 @@
       left: var(--arrow-left-pos);
       translate: -50%;
       filter: var(--dropdown-arrow-color);
+    }
+  }
+}
+
+.top-menu {
+  max-height: calc(var(--inner-max-height) - var(--inner-padding) * 2);
+
+  &__main {
+    width: 292px;
+    max-height: inherit;
+    border-right: 1px solid var(--top-menu-border-color);
+    overflow-y: auto;
+  }
+}
+
+.menu-column {
+  display: flex;
+  gap: 14px;
+
+  &__icon {
+    position: relative;
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__icon-1 {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+  }
+
+  &__icon-2 {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 24px;
+    height: 24px;
+    object-fit: cover;
+    filter: var(--menu-column-icon-color);
+  }
+
+  &__heading {
+    margin-top: 4px;
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 150%;
+  }
+
+  &__list {
+    margin-top: 19px;
+  }
+
+  &__link {
+    display: block;
+    padding: 7px 0;
+    font-size: 1.4rem;
+    line-height: 142.857%;
+
+    &:hover {
+      font-weight: 500;
+      color: #0071dc;
     }
   }
 }
