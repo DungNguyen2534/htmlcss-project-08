@@ -10,12 +10,9 @@
   transition: opacity 0.25s ease;
 
   &__inner {
-    --inner-max-height: min(582px, 100vh - 158px);
     --inner-padding: 30px;
 
     position: relative;
-    max-height: var(--inner-max-height);
-
     padding: var(--inner-padding);
     border-radius: 2rem;
     background: var(--dropdown-bg-color);
@@ -33,11 +30,12 @@
 }
 
 .top-menu {
-  max-height: calc(var(--inner-max-height) - var(--inner-padding) * 2);
+  --main-column-width: 292px;
 
+  position: relative;
   &__main {
-    width: 292px;
-    max-height: inherit;
+    width: var(--main-column-width);
+    height: calc(min(582px, 100vh - 158px) - var(--inner-padding) * 2);
     border-right: 1px solid var(--top-menu-border-color);
     overflow-y: auto;
   }
@@ -46,6 +44,10 @@
 .menu-column {
   display: flex;
   gap: 14px;
+
+  + .menu-column {
+    margin-top: var(--inner-padding);
+  }
 
   &__icon {
     position: relative;
@@ -85,15 +87,31 @@
     margin-top: 19px;
   }
 
+  &__item {
+    &:hover .sub-menu {
+      display: grid;
+    }
+  }
+
+  &__item:hover > &__link {
+    font-weight: 500;
+    color: #0071dc;
+  }
+
   &__link {
     display: block;
     padding: 7px 0;
     font-size: 1.4rem;
     line-height: 142.857%;
-
-    &:hover {
-      font-weight: 500;
-      color: #0071dc;
-    }
   }
+}
+
+.sub-menu {
+  position: absolute;
+  inset: 0 0 0 var(--main-column-width);
+  padding-left: var(--inner-padding);
+  display: none;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--inner-padding);
+  overflow-y: auto;
 }
