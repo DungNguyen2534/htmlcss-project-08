@@ -1616,6 +1616,7 @@ html {
   .dropdown {
     position: initial;
     padding-top: 0;
+    display: none;
   }
 }
 .dropdown__inner {
