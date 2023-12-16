@@ -1984,12 +1984,19 @@ html {
 .like-btn--liked .like-btn__icon {
   display: none;
 }
+.like-btn__icon--liked {
+  margin-top: 10px;
+}
 
 .product-card {
   padding: 16px;
   border-radius: 2rem;
   background: var(--product-card-bg);
   box-shadow: 0px 20px 60px 10px var(--product-card-shadow);
+  transition: transform 0.25s;
+}
+.product-card:hover {
+  transform: translateY(-5px);
 }
 .product-card__img-wrap {
   position: relative;
@@ -2062,6 +2069,13 @@ html {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
+}
+.home .cate-item {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.home .cate-item:hover {
+  transform: scale(1.05, 1.05);
 }
 
 /*# sourceMappingURL=main.css.map */

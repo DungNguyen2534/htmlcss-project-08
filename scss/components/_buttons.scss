@@ -33,4 +33,8 @@
   &--liked .like-btn__icon {
     display: none;
   }
+
+  &__icon--liked {
+    margin-top: 10px;
+  }
 }
