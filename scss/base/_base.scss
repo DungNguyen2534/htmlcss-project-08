@@ -5,6 +5,7 @@
 ::after {
   box-sizing: border-box;
   scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
@@ -39,7 +40,6 @@ textarea,
 select {
   font-family: inherit;
   color: inherit;
-  -webkit-tap-highlight-color: transparent;
 }
 
 .icon {

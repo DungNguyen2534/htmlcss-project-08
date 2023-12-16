@@ -134,6 +134,7 @@ table {
 ::after {
   box-sizing: border-box;
   scroll-behavior: smooth;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
@@ -168,7 +169,6 @@ textarea,
 select {
   font-family: inherit;
   color: inherit;
-  -webkit-tap-highlight-color: transparent;
 }
 
 .icon {
@@ -1995,8 +1995,10 @@ html {
   box-shadow: 0px 20px 60px 10px var(--product-card-shadow);
   transition: transform 0.25s;
 }
-.product-card:hover {
-  transform: translateY(-5px);
+@media (min-width: 768px) {
+  .product-card:hover {
+    transform: translateY(-5px);
+  }
 }
 .product-card__img-wrap {
   position: relative;
@@ -2074,8 +2076,10 @@ html {
   cursor: pointer;
   transition: transform 0.2s;
 }
-.home .cate-item:hover {
-  transform: scale(1.05, 1.05);
+@media (min-width: 768px) {
+  .home .cate-item:hover {
+    transform: scale(1.05, 1.05);
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

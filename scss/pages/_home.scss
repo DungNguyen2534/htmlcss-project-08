@@ -38,8 +38,10 @@
     cursor: pointer;
     transition: transform 0.2s;
 
-    &:hover {
-      transform: scale(1.05, 1.05);
+    @media (min-width: 768px) {
+      &:hover {
+        transform: scale(1.05, 1.05);
+      }
     }
   }
 }
