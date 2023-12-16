@@ -11,7 +11,7 @@ html.dark {
   --top-act-group-shadow: rgba(0, 0, 0, 0.2);
   --top-act-group-separate: #ededf6;
 
-  @include abstracts.breakpoint(lg) {
+  @include abstracts.screen(lg) {
     --header-shadow-color: rgba(0, 0, 0, 0.2);
   }
 
@@ -26,5 +26,5 @@ html.dark {
 
   // Sidebar
   --sidebar-bg: #292e39;
-  --sidebar-shadow: 0px 40px 90px 20px rgba(23, 28, 40, 0.40);
+  --sidebar-shadow: 0px 40px 90px 20px rgba(23, 28, 40, 0.4);
 }
