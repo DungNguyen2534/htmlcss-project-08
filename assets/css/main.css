@@ -2052,6 +2052,9 @@ html {
   background: var(--filter-form-bg);
   filter: drop-shadow(0px 40px 90px var(--filter-form-shadow));
 }
+.filter__col:first-child {
+  user-select: none;
+}
 .filter__heading {
   font-size: 2.2rem;
   font-weight: 500;

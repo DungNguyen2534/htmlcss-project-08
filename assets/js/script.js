@@ -1,3 +1,79 @@
+document.addEventListener("DOMContentLoaded", function () {
+  const slider = document.querySelector(".filter__form-slider");
+  const minInput = document.querySelector(".min-input");
+  const maxInput = document.querySelector(".max-input");
+
+  const handleThickness = 22;
+  const minDistanceBetweenHandles = 8;
+  let isDragging = false;
+  let activeHandle = null;
+
+  const handleDrag = (event) => {
+    if (isDragging && activeHandle !== null) {
+      const sliderRect = slider.getBoundingClientRect();
+      const mouseX = event.clientX - sliderRect.left;
+      let percentage = (mouseX / sliderRect.width) * 100;
+
+      percentage = Math.max(0, Math.min(100, percentage));
+
+      const minValue = parseFloat(getComputedStyle(slider).getPropertyValue("--min-value"));
+      const maxValue = parseFloat(getComputedStyle(slider).getPropertyValue("--max-value"));
+
+      const handleDistance = Math.abs(maxValue - minValue);
+
+      if (activeHandle === "min" && percentage + minDistanceBetweenHandles >= maxValue) {
+        slider.style.setProperty("--min-value", `${maxValue - minDistanceBetweenHandles}%`);
+      } else if (activeHandle === "max" && percentage - minDistanceBetweenHandles <= minValue) {
+        slider.style.setProperty("--max-value", `${minValue + minDistanceBetweenHandles}%`);
+      } else {
+        slider.style.setProperty(`--${activeHandle}-value`, `${percentage}%`);
+      }
+
+      updateInputs();
+    }
+  };
+
+  const updateInputs = () => {
+    const currentMinValue = parseFloat(getComputedStyle(slider).getPropertyValue("--min-value"));
+    const currentMaxValue = parseFloat(getComputedStyle(slider).getPropertyValue("--max-value"));
+    const range = currentMaxValue - currentMinValue;
+
+    const minValueActual = (currentMinValue / 100) * 160;
+    const maxValueActual = (currentMaxValue / 100) * 160;
+
+    minInput.value = `$${minValueActual.toFixed(2)}`;
+    maxInput.value = `$${maxValueActual.toFixed(2)}`;
+  };
+
+  const handleMouseDown = (event) => {
+    isDragging = true;
+    const sliderRect = slider.getBoundingClientRect();
+    const mouseX = event.clientX - sliderRect.left;
+    let percentage = (mouseX / sliderRect.width) * 100;
+
+    const distanceToMin = Math.abs(percentage - parseFloat(getComputedStyle(slider).getPropertyValue("--min-value")));
+    const distanceToMax = Math.abs(percentage - parseFloat(getComputedStyle(slider).getPropertyValue("--max-value")));
+
+    if (distanceToMin < distanceToMax) {
+      activeHandle = "min";
+    } else {
+      activeHandle = "max";
+    }
+
+    document.addEventListener("mousemove", handleDrag);
+    document.addEventListener("mouseup", handleMouseUp);
+  };
+
+  const handleMouseUp = () => {
+    isDragging = false;
+    activeHandle = null;
+    document.removeEventListener("mousemove", handleDrag);
+    document.removeEventListener("mouseup", handleMouseUp);
+  };
+
+  slider.addEventListener("mousedown", handleMouseDown);
+});
+
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
