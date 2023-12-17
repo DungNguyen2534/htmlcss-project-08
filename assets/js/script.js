@@ -179,3 +179,41 @@ window.addEventListener("template-loaded", () => {
     };
   });
 });
+
+// Hiệu ứng hover trên product-card
+window.addEventListener("template-loaded", () => {
+  const thumbs = document.querySelectorAll(".product-card__thumb");
+  const titles = document.querySelectorAll(".product-card__title");
+
+  function isMediaQueryActive() {
+    return window.matchMedia("(min-width: 768px)").matches;
+  }
+
+  function handleThumbHover() {
+    this.style.transform = isMediaQueryActive() ? "scale(1.1)" : "scale(1)";
+  }
+
+  function resetThumb() {
+    this.style.transform = "scale(1)";
+  }
+
+  function handleTitleHover() {
+    const thumb = this.closest(".product-card").querySelector(".product-card__thumb");
+    thumb.style.transform = isMediaQueryActive() ? "scale(1.1)" : "scale(1)";
+  }
+
+  function resetTitle() {
+    const thumb = this.closest(".product-card").querySelector(".product-card__thumb");
+    thumb.style.transform = "scale(1)";
+  }
+
+  thumbs.forEach(function (thumb) {
+    thumb.addEventListener("mouseover", handleThumbHover);
+    thumb.addEventListener("mouseout", resetThumb);
+  });
+
+  titles.forEach(function (title) {
+    title.addEventListener("mouseover", handleTitleHover);
+    title.addEventListener("mouseout", resetTitle);
+  });
+});

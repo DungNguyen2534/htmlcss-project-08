@@ -35,9 +35,7 @@
   }
 
   .cate-item {
-    cursor: pointer;
     transition: transform 0.2s;
-
     @media (min-width: 768px) {
       &:hover {
         transform: scale(1.05, 1.05);
