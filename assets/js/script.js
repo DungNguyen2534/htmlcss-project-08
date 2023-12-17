@@ -224,7 +224,6 @@ window.addEventListener("template-loaded", () => {
   const minInput = document.querySelector(".min-input");
   const maxInput = document.querySelector(".max-input");
 
-  const handleThickness = 22;
   const minDistanceBetweenHandles = 8;
   let isDragging = false;
   let activeHandle = null;
@@ -302,4 +301,15 @@ window.addEventListener("template-loaded", () => {
 
   slider.addEventListener("mousedown", handleStart);
   slider.addEventListener("touchstart", handleStart);
+});
+
+// Search bar animation
+
+window.addEventListener("template-loaded", () => {
+  const searchBtn = document.querySelector(".search-btn");
+  const search = document.querySelector(".top-act__search");
+
+  searchBtn.onclick = function () {
+    search.classList.toggle("active");
+  };
 });
