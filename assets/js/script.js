@@ -1,3 +1,4 @@
+// Code price slider
 document.addEventListener("DOMContentLoaded", function () {
   const slider = document.querySelector(".filter__form-slider");
   const minInput = document.querySelector(".min-input");
@@ -10,8 +11,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const handleDrag = (event) => {
     if (isDragging && activeHandle !== null) {
+      event.preventDefault();
+
       const sliderRect = slider.getBoundingClientRect();
-      const mouseX = event.clientX - sliderRect.left;
+      const clientX = event.type.startsWith("touch") ? event.touches[0].clientX : event.clientX;
+      const mouseX = clientX - sliderRect.left;
       let percentage = (mouseX / sliderRect.width) * 100;
 
       percentage = Math.max(0, Math.min(100, percentage));
@@ -45,10 +49,11 @@ document.addEventListener("DOMContentLoaded", function () {
     maxInput.value = `$${maxValueActual.toFixed(2)}`;
   };
 
-  const handleMouseDown = (event) => {
+  const handleStart = (event) => {
     isDragging = true;
     const sliderRect = slider.getBoundingClientRect();
-    const mouseX = event.clientX - sliderRect.left;
+    const clientX = event.type.startsWith("touch") ? event.touches[0].clientX : event.clientX;
+    const mouseX = clientX - sliderRect.left;
     let percentage = (mouseX / sliderRect.width) * 100;
 
     const distanceToMin = Math.abs(percentage - parseFloat(getComputedStyle(slider).getPropertyValue("--min-value")));
@@ -61,17 +66,22 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     document.addEventListener("mousemove", handleDrag);
-    document.addEventListener("mouseup", handleMouseUp);
+    document.addEventListener("touchmove", handleDrag, { passive: false });
+    document.addEventListener("mouseup", handleEnd);
+    document.addEventListener("touchend", handleEnd);
   };
 
-  const handleMouseUp = () => {
+  const handleEnd = () => {
     isDragging = false;
     activeHandle = null;
     document.removeEventListener("mousemove", handleDrag);
-    document.removeEventListener("mouseup", handleMouseUp);
+    document.removeEventListener("touchmove", handleDrag);
+    document.removeEventListener("mouseup", handleEnd);
+    document.removeEventListener("touchend", handleEnd);
   };
 
-  slider.addEventListener("mousedown", handleMouseDown);
+  slider.addEventListener("mousedown", handleStart);
+  slider.addEventListener("touchstart", handleStart);
 });
 
 const $ = document.querySelector.bind(document);
