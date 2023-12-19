@@ -141,7 +141,42 @@ html {
   font-size: 62.5%;
 }
 
+html::-webkit-scrollbar {
+  width: 0.7vw;
+}
+html::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+}
+html::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+.top-menu__main::-webkit-scrollbar,
+.sub-menu::-webkit-scrollbar,
+.filter__row::-webkit-scrollbar {
+  width: 0.4vw;
+}
+.top-menu__main::-webkit-scrollbar-thumb,
+.sub-menu::-webkit-scrollbar-thumb,
+.filter__row::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-element-thumb);
+}
+.top-menu__main::-webkit-scrollbar-track,
+.sub-menu::-webkit-scrollbar-track,
+.filter__row::-webkit-scrollbar-track {
+  background: var(--scrollbar-element-track);
+}
+
+.top-menu__main,
+.sub-menu,
+.filter__row {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-element-thumb) var(--scrollbar-element-track);
+}
+
 body {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
   font-size: 1.6rem;
   font-family: Gordita, sans-serif;
   color: var(--text-color);
@@ -1319,6 +1354,10 @@ html.dark {
   --top-act-group-bg-color: #292e39;
   --top-act-group-shadow: rgba(0, 0, 0, 0.2);
   --top-act-group-separate: #ededf6;
+  --scrollbar-thumb: #2f333c;
+  --scrollbar-track: #21252d;
+  --scrollbar-element-thumb: #262c37;
+  --scrollbar-element-track: #363944;
   --dropdown-bg-color: #2f3441;
   --dropdown-shadow-color: rgba(23, 28, 40, 0.4);
   --dropdown-arrow-color: brightness(0) saturate(100%) invert(18%) sepia(15%) saturate(852%) hue-rotate(185deg)
@@ -1357,6 +1396,10 @@ html {
   --top-act-group-bg-color: #fff;
   --top-act-group-shadow: rgba(237, 237, 246, 0.2);
   --top-act-group-separate: #ededf6;
+  --scrollbar-thumb: #7775;
+  --scrollbar-track: #ccc;
+  --scrollbar-element-thumb: #e2e2e2;
+  --scrollbar-element-track: #fcfcfc;
   --dropdown-bg-color: #fff;
   --dropdown-shadow-color: rgba(200, 200, 200, 0.4);
   --top-menu-border-color: #d2d1d6;

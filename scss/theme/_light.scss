@@ -18,6 +18,13 @@ html {
     --header-shadow-color: rgba(237, 237, 246, 0.2);
   }
 
+  // Scrollbar color
+  --scrollbar-thumb: #7775;
+  --scrollbar-track: #ccc;
+
+  --scrollbar-element-thumb: #e2e2e2;
+  --scrollbar-element-track: #fcfcfc;
+
   // dropdown
   --dropdown-bg-color: #fff;
   --dropdown-shadow-color: rgba(200, 200, 200, 0.4);

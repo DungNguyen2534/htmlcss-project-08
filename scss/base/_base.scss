@@ -12,7 +12,43 @@ html {
   font-size: 62.5%;
 }
 
+html::-webkit-scrollbar {
+  width: 0.7vw;
+
+  &-thumb {
+    background: var(--scrollbar-thumb);
+  }
+
+  &-track {
+    background: var(--scrollbar-track);
+  }
+}
+
+.top-menu__main::-webkit-scrollbar,
+.sub-menu::-webkit-scrollbar,
+.filter__row::-webkit-scrollbar {
+  width: 0.4vw;
+
+  &-thumb {
+    background: var(--scrollbar-element-thumb);
+  }
+
+  &-track {
+    background: var(--scrollbar-element-track);
+  }
+}
+
+.top-menu__main,
+.sub-menu,
+.filter__row {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-element-thumb) var(--scrollbar-element-track);
+}
+
 body {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+
   font-size: 1.6rem;
   font-family: Gordita, sans-serif;
   color: var(--text-color);

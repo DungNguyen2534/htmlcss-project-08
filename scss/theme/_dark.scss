@@ -15,6 +15,13 @@ html.dark {
     --header-shadow-color: rgba(0, 0, 0, 0.2);
   }
 
+  // Scrollbar color
+  --scrollbar-thumb: #2f333c;
+  --scrollbar-track: #21252d;
+
+  --scrollbar-element-thumb: #262c37;
+  --scrollbar-element-track: #363944;
+
   // dropdown
   --dropdown-bg-color: #2f3441;
   --dropdown-shadow-color: rgba(23, 28, 40, 0.4);
