@@ -313,13 +313,31 @@ window.addEventListener("template-loaded", () => {
   slider.addEventListener("touchstart", handleStart);
 });
 
-// Search bar animation
-
+// Automatic slideshow
 window.addEventListener("template-loaded", () => {
-  const searchBtn = document.querySelector(".search-btn");
-  const search = document.querySelector(".top-act__search");
+  let slideIndex = 0;
+  const slides = document.querySelectorAll(".slideshow__item a");
+  const totalSlides = slides.length;
+  const slideNum = document.querySelector(".slideshow__num");
 
-  searchBtn.onclick = function () {
-    search.classList.toggle("active");
-  };
+  function showSlide(n) {
+    for (let i = 0; i < totalSlides; i++) {
+      slides[i].style.display = "none";
+    }
+
+    slides[n].style.display = "block";
+    slideNum.textContent = n + 1;
+  }
+
+  function nextSlide() {
+    slideIndex++;
+    if (slideIndex === totalSlides) {
+      slideIndex = 0;
+    }
+    showSlide(slideIndex);
+  }
+
+  showSlide(slideIndex);
+
+  setInterval(nextSlide, 5000);
 });
