@@ -341,3 +341,4 @@ window.addEventListener("template-loaded", () => {
 
   setInterval(nextSlide, 5000);
 });
+

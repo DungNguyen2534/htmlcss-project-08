@@ -1713,7 +1713,7 @@ html {
   }
 }
 .dropdown__inner {
-  --inner-padding: 18px;
+  --inner-padding: 16px;
   position: relative;
   padding: var(--inner-padding);
   border-radius: 20px;
@@ -1908,7 +1908,7 @@ html {
   column-gap: 24px;
   bottom: 15%;
   left: 5.2%;
-  z-index: 2;
+  z-index: 1;
 }
 .slideshow__num {
   color: #fff;
