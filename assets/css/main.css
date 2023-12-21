@@ -1776,6 +1776,11 @@ html {
 .footer__social-link:hover {
   transform: scale(1.1, 1.1);
 }
+@media (max-width: 767.98px) {
+  .footer__social-link:hover {
+    transform: initial;
+  }
+}
 .footer__social-link--fb {
   background: #4863a9;
 }
