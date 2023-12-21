@@ -1726,13 +1726,14 @@ html {
 .footer__list {
   margin-top: 18px;
 }
-.footer__link, .footer__text {
-  display: inline-block;
-}
-.footer__link:hover, .footer__text:hover {
+.footer__link:hover {
   color: #0071dc;
 }
+.footer__text {
+  cursor: default;
+}
 .footer__link, .footer__text {
+  display: inline-block;
   padding: 8px 0;
   line-height: 1.4;
 }
