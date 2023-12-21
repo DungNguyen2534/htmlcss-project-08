@@ -60,4 +60,13 @@ html {
 
   // Footer
   --footer-bg-color: #eee;
+
+  // Auth
+  --auth-content-bg: #fff;
+  @include abstracts.screen(md) {
+    --auth-intro-bg: #fff;
+  }
+
+  // form
+  --form-placeholder-color: #d2d1d6;
 }

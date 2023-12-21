@@ -31,6 +31,29 @@
     justify-content: space-between;
     padding: 16px 0;
   }
+
+  &__logo {
+    @include abstracts.screen(lg) {
+      gap: 10px !important;
+      margin-left: 25px;
+
+      &-img {
+        width: 24px;
+      }
+
+      &-title {
+        font-size: 1.8rem !important;
+      }
+    }
+
+    @include abstracts.screen(md) {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      translate: -50% -50%;
+      margin-left: 0;
+    }
+  }
 }
 
 .navbar {
@@ -181,6 +204,12 @@
 
   @include abstracts.screen(md) {
     margin-left: 0;
+
+    &__sign-up {
+      height: 40px !important;
+      padding: 0 8px !important;
+      font-size: 1.5rem !important;
+    }
   }
 
   &__group {
